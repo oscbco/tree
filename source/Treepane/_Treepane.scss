@@ -1,0 +1,68 @@
+body {
+  font-family: sans;
+  font-size: 14px;
+}
+
+.treepanel * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+.node {
+  position: relative;
+  line-height: 20px;
+}
+
+.line, .midl, .none, .last, .toggle {
+  display: inline-block;
+  position: relative;
+  font-family: mono;
+  user-select: none;
+  width: 15px;
+}
+.line::before {
+  content: '';
+  position: absolute;
+  height: calc(100% + 1px);
+  border-left: 1.1px dotted black;
+}
+.midl, .last {
+  margin-right: -7px;
+}
+.midl::before {
+  content: '';
+  border-left: 1.1px dotted black;
+  position: absolute;
+  height: calc(100% + 1px);
+}
+.midl::after {
+  content: '';
+  border-bottom: 1.1px dotted black;
+  position: absolute;
+  top: 0;
+  width: 60%;
+  left: 0;
+  bottom: calc(50% - 0.9px);
+}
+.last::after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  bottom: calc(50% - 0.7px);
+  left: 0;
+  right: 0;
+  width: calc(60% - 2px);
+  border-left: 1.1px dotted black;
+  border-bottom: 1.1px dotted black;
+}
+.toggle {
+  border: 1px solid #aaa;
+  color: #999;
+  border-radius: 3px;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 13px;
+  margin-right: 3px;
+}
