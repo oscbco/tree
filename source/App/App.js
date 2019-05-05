@@ -76,9 +76,7 @@ export default function App () {
   const onToggle = (keypath) => {
     const node = getNodeByKeypath(collection, keypath);
     node.toggle = !node.toggle;
-    setCollection(collection);
-    const node2 = getNodeByKeypath(collection, keypath);
-    console.log(node2);
+    setCollection({ ...collection });
   };
   return (
     <React.Fragment>
