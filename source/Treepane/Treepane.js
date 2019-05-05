@@ -3,8 +3,9 @@ import { findNode, getNodeByKeypath, getTotal } from '../getFlattenedArrayItem/'
 import css from './_Treepane.scss';
 
 export default function Treepane ({ collection, setCollection, onToggle }) {
-  const handleToggle = (node) => {
-    onToggle(node.keypath);
+  const handleToggle = (keypath) => {
+    console.log(keypath);
+    onToggle(keypath);
   };
 
   const getTreeLines = (keypath, node) => {
@@ -16,10 +17,11 @@ export default function Treepane ({ collection, setCollection, onToggle }) {
       partialKeypath.push(elem);
       const partialNode = getNodeByKeypath(collection, partialKeypath);
       if (partialKeypath.length === keypath.length) {
+        console.log('node.keypath', keypath);
         return (
           <React.Fragment>
             {partialNode.hasNextSibling ? <div className={css.midl}>&nbsp;</div> : <div key={key} className={css.last}>&nbsp;</div>}
-            {partialNode.child ? <div className={css.toggle} onClick={handleToggle.bind(this, node)}>-</div> : null}
+            {partialNode.child ? <div className={css.toggle} data-keypath={[...keypath]} onClick={handleToggle.bind(this, [...keypath])}>{node.toggle ? '+' : '-'}</div> : null}
           </React.Fragment>
         );
       } else {
