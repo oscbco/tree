@@ -79,7 +79,7 @@ const findUpperNode = ({ collection, requestedIndex, count = 0, keypath = [0] })
         node.keypath = keypath;
         return node;
       }
-      if (node.child !== null && !prevNode && node.child[node.child.length - 1] !== prevNode) {
+      if (node.child !== null && node.toggle === false && !prevNode && node.child[node.child.length - 1] !== prevNode) {
         keypath.push(0);
         count++;
         prevNode = null;
