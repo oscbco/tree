@@ -10,9 +10,17 @@ body {
   box-sizing: border-box;
 }
 .node {
-  position: relative;
   line-height: 20px;
+  position: relative;
+  white-space: nowrap;
 }
+
+.node-text {
+  display: inline-block;
+  position: relative;
+  user-select: none;
+  cursor: default;
+  }
 
 .line, .midl, .none, .last, .toggle {
   display: inline-block;
