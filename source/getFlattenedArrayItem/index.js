@@ -40,9 +40,7 @@ const findLowerNode = ({ collection, requestedIndex, count = 0, keypath = [0] })
         prevNode = null;
       } else {
         if (count === requestedIndex) {
-          node.count = count;
-          node.keypath = keypath;
-          return node;
+          return { value: node.value, count, keypath };
         }
         if (node.hasPrevSibling) {
           keypath[keypath.length - 1]--;
@@ -115,7 +113,8 @@ export const findNode = (function () {
   return function ({ requestedIndex, collection }) {
     let node = null;
     if (requestedIndex < count) {
-      node = findLowerNode({ requestedIndex, collection, count, keypath });
+      // node = findLowerNode({ requestedIndex, collection, count: 0, keypath: [0] });
+      node = findUpperNode({ requestedIndex, collection, count: 0, keypath: [0] });
       keypath = node.keypath;
       count = node.count;
     } else {
