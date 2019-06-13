@@ -1,7 +1,7 @@
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+var { CleanWebpackPlugin } = require('clean-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
 
@@ -48,7 +48,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
-              camelCase: true
+              localsConvention: 'camelCase'
             }
           },
           {
@@ -118,6 +118,12 @@ module.exports = {
       commonjs2: 'prop-types',
       commonjs: 'prop-types',
       amd: 'prop-types'
+    },
+    'react-window': {
+      root: 'ReactWindow',
+      commonjs2: 'react-window',
+      commonjs: 'react-window',
+      amd: 'react-window'
     }
   },
   target: 'web'
