@@ -1,7 +1,6 @@
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-var { CleanWebpackPlugin } = require('clean-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
 
@@ -11,12 +10,11 @@ module.exports = {
     path.join(__dirname, 'source', 'Treepane', 'Treepane.js')
   ],
   output: {
-    filename: 'build/index.js',
-    chunkFilename: 'build/index.js',
+    filename: 'index.js',
+    chunkFilename: 'index.js',
     path: path.resolve(__dirname),
     publicPath: './',
-    library: 'Treepane',
-    // libraryExport: 'default',
+    library: 'Tree',
     libraryTarget: 'umd'
   },
   mode: 'production',
@@ -70,7 +68,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 1024,
-              name: 'build/images/[name].[ext]'
+              name: '[name].[ext]'
             }
           }
         ]
@@ -90,10 +88,6 @@ module.exports = {
     }
   },
   plugins: [
-    new CleanWebpackPlugin({
-      dry: true,
-      cleanOnceBeforeBuildPatterns: ['build']
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
@@ -101,8 +95,8 @@ module.exports = {
       sourceMap: false
     }),
     new MiniCssExtractPlugin({
-      filename: 'build/css/[name].css',
-      chunkFilename: 'build/css/[id].css'
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     }),
     new BundleAnalyzerPlugin()
   ],

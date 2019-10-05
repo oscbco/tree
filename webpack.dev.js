@@ -9,9 +9,9 @@ module.exports = {
     path.join(__dirname, 'source', 'index.js')
   ],
   output: {
-    filename: 'build/[name].js',
-    chunkFilename: 'build/[name].js',
-    path: path.resolve(__dirname, 'build'),
+    filename: '[name].js',
+    chunkFilename: '[name].js',
+    path: path.resolve(__dirname),
     publicPath: ''
   },
   mode: 'development',
