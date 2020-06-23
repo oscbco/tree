@@ -6,7 +6,7 @@ var path = require('path');
 
 module.exports = {
   entry: [
-    // 'react-hot-loader/patch',
+    'react-hot-loader/patch',
     path.join(__dirname, 'source', 'Treepane', 'Treepane.js')
   ],
   output: {
@@ -98,7 +98,9 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[id].css'
     }),
-    new BundleAnalyzerPlugin()
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static'
+    })
   ],
   externals: {
     react: {
