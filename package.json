@@ -1,6 +1,6 @@
 {
   "name": "@oscbco/tree",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A virtualized tree control written with react",
   "main": "index.js",
   "scripts": {
